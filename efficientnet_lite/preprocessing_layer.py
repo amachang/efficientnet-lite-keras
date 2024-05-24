@@ -1,6 +1,7 @@
 import tensorflow as tf
+from packaging import version
 
-if tf.__version__ < "2.8":
+if version.parse(tf.__version__) < version.parse("2.8"):
     from tensorflow.keras.layers.experimental.preprocessing import Normalization
 else:
     from tensorflow.keras.layers import Normalization
