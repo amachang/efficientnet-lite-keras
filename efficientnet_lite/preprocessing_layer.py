@@ -3,8 +3,10 @@ from packaging import version
 
 if version.parse(tf.__version__) < version.parse("2.8"):
     from tensorflow.keras.layers.experimental.preprocessing import Normalization
-else:
+elif version.parse(tf.__version__) < version.parse("2.13"):
     from tensorflow.keras.layers import Normalization
+else:
+    Normalization = tf.keras.layers.Normalization
 
 
 def get_preprocessing_layer():
